@@ -1,9 +1,8 @@
 // 定义一个单文件组件
 loader.set("bui-component-example",{
-    path: __dirname+"/",
     template(){
         return `
-            <div class="bui-navbar">
+            <div class="bui-navbar" b-title="navbar.title">
                 <ul class="bui-nav" b-template="navbar.tplMenu(navbar.menu)">
                     <!--<li class="bui-btn">首页</li>-->
                 </ul>
@@ -27,6 +26,7 @@ loader.set("bui-component-example",{
             el: `#${module.id}`,
             scope: "navbar",
             data: {
+                title:"导航组件",
                 menu: [{title: '首页', url: 'main'}, {title: '新闻', url: 'pages/news/index.html'}],
             },
             methods: {},
