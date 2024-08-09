@@ -4,9 +4,8 @@ loader.set("bui-component-example",{
     template(){
         return `
             <div class="bui-navbar">
-                <img src="images/applogo.png" alt="">
-                <ul class="bui-nav">
-                    <li class="bui-btn">首页</li><li class="bui-btn">新闻</li>
+                <ul class="bui-nav" b-template="navbar.tplMenu(navbar.menu)">
+                    <!--<li class="bui-btn">首页</li>-->
                 </ul>
             </div>
 
@@ -26,17 +25,23 @@ loader.set("bui-component-example",{
         // 初始化数据行为存储
         var bs = bui.store({
             el: `#${module.id}`,
-            scope: "page",
+            scope: "navbar",
             data: {
-               a: 1,
+                menu: [{title: '首页', url: 'main'}, {title: '新闻', url: 'pages/news/index.html'}],
             },
             methods: {},
             watch: {},
             computed: {},
-            templates: {},
-            beforeMount: function(){
-                // 数据解析前执行, 修改data的数据示例
-                // this.$data.a = 2
+            templates: {
+                tplMenu(data){
+                    let html = '';
+                    if (data && data.length > 0) {
+                        data.forEach(item => {
+                            html += `<li class="bui-btn" href="${item.url}">${item.title}</li>`
+                        });
+                    }
+                    return html;
+                }
             },
             mounted: function(){
                 // 数据解析后执行
