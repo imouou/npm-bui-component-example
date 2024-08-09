@@ -1,0 +1,11 @@
+{
+  "name": "bui-component-example",
+  "version": "1.0.2",
+  "description": "BUI NPM 单文件组件的示例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "王小o",
+  "license": "MIT"
+}
